@@ -20,6 +20,9 @@ storiesOf("Text")
       <UseCase text="bold" usage="Used for bolded body text.">
         <Text preset="bold">Osnap! I'm puffy.</Text>
       </UseCase>
+      <UseCase text="subheader" usage="Used for subheaders.">
+        <Text preset="subheader">My subheader!</Text>
+      </UseCase>
       <UseCase text="header" usage="Used for major section headers.">
         <Text preset="header">Behold!</Text>
       </UseCase>
