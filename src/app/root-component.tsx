@@ -10,6 +10,24 @@ import { contains } from "ramda"
 import { DEFAULT_NAVIGATION_CONFIG } from "../navigation/navigation-config"
 import { palette } from "../theme/palette"
 
+import AWSAppSyncClient from "aws-appsync"
+import { Rehydrated } from "aws-appsync-react"
+import { AUTH_TYPE } from "aws-appsync/lib/link/auth-link"
+import { ApolloProvider } from "react-apollo"
+import AppSync from "../../AppSync.js"
+
+const client = new AWSAppSyncClient({
+  url: AppSync.graphqlEndpoint,
+  region: AppSync.region,
+  auth: {
+    type: AUTH_TYPE.API_KEY,
+    apiKey: AppSync.apiKey,
+  },
+  options: {
+    fetchPolicy: "cache-and-network",
+  },
+})
+
 interface RootComponentState {
   rootStore?: RootStore
 }
@@ -64,13 +82,19 @@ export class RootComponent extends React.Component<{}, RootComponentState> {
     // --- am: end list of stores ---
 
     return (
-      // <SafeAreaView style={{ flex: 1, backgroundColor: palette.ebony }}>
-      <Provider rootStore={rootStore} navigationStore={rootStore.navigationStore} {...otherStores}>
-        <BackButtonHandler canExit={this.canExit}>
-          <StatefulNavigator />
-        </BackButtonHandler>
-      </Provider>
-      // </SafeAreaView>
+      <ApolloProvider client={client}>
+        <Rehydrated>
+          <Provider
+            rootStore={rootStore}
+            navigationStore={rootStore.navigationStore}
+            {...otherStores}
+          >
+            <BackButtonHandler canExit={this.canExit}>
+              <StatefulNavigator />
+            </BackButtonHandler>
+          </Provider>
+        </Rehydrated>
+      </ApolloProvider>
     )
   }
 }

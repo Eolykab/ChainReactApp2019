@@ -1,5 +1,5 @@
 import * as React from "react"
-import { View, ViewStyle, ScrollView } from "react-native"
+import { View, ViewStyle, ScrollView, SafeAreaView } from "react-native"
 import { Text } from "../../shared/text"
 import { NavigationScreenProps } from "react-navigation"
 import { Screen } from "../../shared/screen"
@@ -7,6 +7,7 @@ import { palette } from "../../../theme/palette"
 import { isThursday, isFriday } from "date-fns"
 import { ScheduleNav } from "./schedule-nav"
 import { ScheduleCell } from "./schedule-cell"
+import { spacing } from "../../../theme"
 
 const ROOT: ViewStyle = {
   flex: 1,
@@ -111,17 +112,23 @@ export class ScheduleScreen extends React.Component<
 
   render() {
     return (
-      <Screen preset="fixed" backgroundColor={palette.portGore} style={ROOT}>
-        <Text preset="title" tx="scheduleScreen.title" />
-        <ScrollView style={{ flex: 1, width: "100%" }}>{this.renderContent()}</ScrollView>
-        <ScheduleNav selected={this.state.selected} onSelected={this.onSelected} />
-      </Screen>
+      <SafeAreaView style={{ flex: 1, backgroundColor: palette.portGore }}>
+        <Screen preset="fixed" backgroundColor={palette.portGore} style={ROOT}>
+          <ScrollView style={{ flex: 1, width: "100%" }}>{this.renderContent()}</ScrollView>
+          <ScheduleNav selected={this.state.selected} onSelected={this.onSelected} />
+        </Screen>
+      </SafeAreaView>
     )
   }
 
   renderContent = () => {
     return (
       <View>
+        <Text
+          preset="title"
+          tx="scheduleScreen.title"
+          style={{ marginLeft: spacing.large, marginTop: spacing.medium }}
+        />
         <ScheduleCell
           index={0}
           talk={TALK}
