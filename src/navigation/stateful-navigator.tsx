@@ -1,6 +1,5 @@
 import * as React from "react"
 import { inject, observer } from "mobx-react"
-import { addNavigationHelpers } from "react-navigation"
 import { RootNavigator } from "./root-navigator"
 import { NavigationStore } from "../models/navigation-store/navigation-store"
 import throttle from "lodash.throttle"
@@ -27,12 +26,13 @@ export class StatefulNavigator extends React.Component<StatefulNavigatorProps, {
     const { state, dispatch, addListener } = this.props.navigationStore
 
     // create a custom navigation implementation
-    const navigation = addNavigationHelpers({
+    const navigation = {
       dispatch: throttle(dispatch, THROTTLE, THROTTLE_OPTIONS),
       state,
       addListener,
-    } as any) // (as any is only here until @types/react-navigation is updated)
+    }
 
-    return <RootNavigator navigation={navigation} />
+    // return <RootNavigator navigation={navigation} />
+    return <RootNavigator />
   }
 }
