@@ -54,6 +54,7 @@ DEPENDENCIES:
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - React/Core (from `../node_modules/react-native`)
   - React/DevSupport (from `../node_modules/react-native`)
+  - React/fishhook (from `../node_modules/react-native`)
   - React/RCTActionSheet (from `../node_modules/react-native`)
   - React/RCTAnimation (from `../node_modules/react-native`)
   - React/RCTBlob (from `../node_modules/react-native`)
@@ -94,6 +95,6 @@ SPEC CHECKSUMS:
   RNKeychain: 627c6095cef215dd3d9804a9a9cf45ab96aa3997
   yoga: a23273df0088bf7f2bb7e5d7b00044ea57a2a54a
 
-PODFILE CHECKSUM: 3c9a421c6b841ea1d7bd404123c9d34ed84ce51d
+PODFILE CHECKSUM: 1dcd867b6ee03bc0038a5933f8eb96407eaacd89
 
 COCOAPODS: 1.5.3

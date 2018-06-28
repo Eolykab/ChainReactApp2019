@@ -143,10 +143,22 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/RNI18n/RNI18n.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/RNKeychain/RNKeychain.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/React/React.framework"
   install_framework "${PODS_ROOT}/../../node_modules/@mapbox/react-native-mapbox-gl/ios/Mapbox.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/react-native-mapbox-gl/react_native_mapbox_gl.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/react-native-splash-screen/react_native_splash_screen.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/yoga/yoga.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/RNI18n/RNI18n.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/RNKeychain/RNKeychain.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/React/React.framework"
   install_framework "${PODS_ROOT}/../../node_modules/@mapbox/react-native-mapbox-gl/ios/Mapbox.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/react-native-mapbox-gl/react_native_mapbox_gl.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/react-native-splash-screen/react_native_splash_screen.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/yoga/yoga.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

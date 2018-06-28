@@ -16,7 +16,9 @@
     "postinstall": "solidarity",
     "precommit": "lint-staged",
     "prepare": "patch-package",
-    "storybook": "storybook start -p 9001 --skip-packager"
+    "storybook": "storybook start -p 9001 --skip-packager",
+    "xbuild": "xcodebuild -showBuildSettings -workspace ./ios/ChainReactApp2018.xcworkspace -scheme ChainReactApp2018",
+    "newclear": "rm -rf /Users/gantman/Library/Caches/CocoaPods && rm -rf ~/Library/Developer/Xcode/DerivedData && yarn cache clean && rm -rf node_modules && rm -rf ios/build && rm -rf ios/Pods && yarn && cd ios && pod update && cd - && rm -rf $TMPDIR/react-*"
   },
   "dependencies": {
     "@mapbox/react-native-mapbox-gl": "6.1.1",
