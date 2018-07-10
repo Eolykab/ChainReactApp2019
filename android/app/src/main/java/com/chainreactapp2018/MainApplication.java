@@ -13,6 +13,7 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.viromedia.bridge.ReactViroPackage;
+import com.bugsnag.BugsnagReactNative;
 
 import java.util.Arrays;
 import java.util.List;
@@ -34,7 +35,8 @@ public class MainApplication extends Application implements ReactApplication {
         new RCTMGLPackage(),
         new SplashScreenReactPackage(),
         new ReactViroPackage(ReactViroPackage.ViroPlatform.GVR),
-        new LottiePackage()
+        new LottiePackage(),
+        new MainReactPackage(), BugsnagReactNative.getPackage()
       );
     }
 
@@ -52,6 +54,7 @@ public class MainApplication extends Application implements ReactApplication {
   @Override
   public void onCreate() {
     super.onCreate();
+    BugsnagReactNative.start(this);
     SoLoader.init(this, /* native exopackage */ false);
   }
 }

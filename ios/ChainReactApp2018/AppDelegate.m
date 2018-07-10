@@ -10,6 +10,7 @@
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 #import "SplashScreen.h"
+#import <BugsnagReactNative/BugsnagReactNative.h>
 
 @implementation AppDelegate
 
@@ -25,12 +26,13 @@
                                                    launchOptions:launchOptions];
   [SplashScreen show];
   rootView.backgroundColor = [[UIColor alloc] initWithRed:0.09f green:0.09f blue:0.22f alpha:1];
-  
+
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [UIViewController new];
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  [BugsnagReactNative start];
   return YES;
 }
 
